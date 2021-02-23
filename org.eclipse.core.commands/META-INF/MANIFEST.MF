@@ -1,0 +1,22 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: %pluginName
+Bundle-SymbolicName: org.eclipse.core.commands
+Bundle-Version: 3.9.700.v20191217-1850
+Bundle-ClassPath: org.eclipse.core.commands_3.9.700.v20191217-1850.jar
+Bundle-Vendor: %providerName
+Bundle-Localization: plugin
+Export-Package: org.eclipse.core.commands,
+ org.eclipse.core.commands.common,
+ org.eclipse.core.commands.contexts,
+ org.eclipse.core.commands.internal.util;x-internal:=true,
+ org.eclipse.core.commands.operations,
+ org.eclipse.core.commands.util,
+ org.eclipse.core.internal.commands.operations;x-internal:=true,
+ org.eclipse.core.internal.commands.util;x-internal:=true
+Require-Bundle: org.eclipse.equinox.common;bundle-version="[3.2.0,4.0.0)"
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Build-Jdk-Spec: 11
+Eclipse-SourceReferences: scm:git:git://git.eclipse.org/gitroot/platform/eclipse.platform.ui.git;path="bundles/org.eclipse.core.commands";tag="I20191217-1800";commitId=b8bac1dc853fd63620f6752b14793e73b608d551
+Created-By: Maven Archiver 3.5.0
+Automatic-Module-Name: org.eclipse.core.commands

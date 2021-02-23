@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8">
+		<attributes>
+			<attribute name="module" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="lib" path="/org.eclipse.swt/swt.jar" sourcepath="/org.eclipse.swt/src.zip">
+		<attributes>
+			<attribute name="javadoc_location" value="http://help.eclipse.org/stable/nftopic/org.eclipse.platform.doc.isv/reference/api/"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="/org.eclipse.jface/org.eclipse.jface_3.19.0.v20200218-1607.jar" sourcepath="/org.eclipse.jface/org.eclipse.jface.source_3.19.0.v20200218-1607.jar"/>
+	<classpathentry kind="lib" path="/org.eclipse.equinox.common/org.eclipse.equinox.common_3.11.0.v20200206-0817.jar"/>
+	<classpathentry kind="lib" path="/org.eclipse.core.commands/org.eclipse.core.commands_3.9.700.v20191217-1850.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>

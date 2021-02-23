@@ -1,0 +1,17 @@
+INDEX VERSION 1.131+X:\Eclipse\x64\Moira MyBuild\.metadata\.plugins\org.eclipse.jdt.core
+2861845627.index
+1610022946.index
+3330726974.index
+1762830487.index
+2703150587.index
+654797562.index
+3376854151.index
+1020816209.index
+1185915823.index
+2724436732.index
+3520335140.index
+147506196.index
+3531157204.index
+2826240938.index
+2562523385.index
+1662466767.index
