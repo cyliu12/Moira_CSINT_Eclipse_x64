@@ -8,8 +8,8 @@ import org.athomeprojects.base.*;
 public class Launch {
 
 	public Launch() {
-		int[] birth = { 1984, 1, 1, 1, 30 };
-		int[] now = { 2020, 4, 28, 9, 0 };
+		int[] birth = { 1984, 2, 4, 1, 30 };
+		int[] now = { 2022, 10, 28, 0, 0 };
 		Moira.mri.setBirthTime(birth);
 		Moira.mri.setNowTime(now);
 		Moira.init();
@@ -25,11 +25,12 @@ public class Launch {
 		Moira.disposeMoira();
 		switch (1) {
 		case 1:
-			int[] start = { 2020, 4, 6, 9, 0 };
+			int[] start = { 2022, 8, 31, 0, 0 };
 			Log.c("==getCrossOver==");
 			int[] crov_time = new int[5];
 			String[] pos = new String[2];
-			crov_time = MRI.getCrossOver(10, start, pos, country_list[33], city_list[6], zone_list[312]);
+			//planet_no 0~6:日月金木水火土 10~13:計羅炁孛
+			crov_time = MRI.getCrossOver(4, start, pos, country_list[33], city_list[6], zone_list[312]);			
 			Log.c("起　　: " + pos[0]);
 			Log.c(pos[1]);
 			Log.c(Arrays.toString(crov_time));

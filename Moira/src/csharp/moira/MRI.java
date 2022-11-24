@@ -11,7 +11,7 @@ import org.athomeprojects.base.City;
 import org.athomeprojects.base.Resource;
 
 public class MRI {
-	static public final String DllID = "MRI_x64";
+	static public final String DllID = "MRI_x64_1.00.221118";
 	static public final int SUN = ChartData.SUN; // 0
 	static public final int MOON = ChartData.MOON; // 1
 	static public final int VENUS = ChartData.VENUS; // 2
@@ -588,7 +588,7 @@ public class MRI {
 			String dest_b = data.getPlanetPos(planet_no, sign_pos[(sign_idx - step + 28) % 28]);
 			String dest_mansion_b = result.half_stellar_signs[(sign_idx - step + 28) % 28];
 
-			bwd_dest = "逆交" + dest_mansion_b + ">>" + dest;
+			bwd_dest = "逆交" + dest_mansion_b + ">>" + dest_b;
 			if (bwd_dest.contains("?") || !dest_mansion_b.contentEquals(dest_b.substring(5, 6))) // 處理偶發異常度數
 				bwd_dest = "逆交" + dest_mansion_b + ">>"
 						+ data.getPlanetPos(planet_no, sign_pos[(sign_idx - step + 28) % 28] - 0.0001);

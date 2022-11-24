@@ -19,7 +19,7 @@
 	</section>
 	<section name="FatJarPackageWizard">
 		<item key="FatJarPackageWizardPage.ANTSCRIPT_SAVE" value="false"/>
-		<item key="FatJarPackageWizardPage.ANTSCRIPT_LOCATION" value="Z:\Eclipse\x64\Moira MyBuild"/>
+		<item key="FatJarPackageWizardPage.ANTSCRIPT_LOCATION" value="Z:\Eclipse\x64\Moira MyBuild.xml"/>
 		<item key="FatJarPackageWizardPage.LIBRARY_HANDLING" value="1"/>
 		<item key="FatJarPackageWizardPage.LAUNCH_CONFIGURATION_SELECTION_NAME" value="Moira - Moira"/>
 		<item key="FatJarPackageWizardPage.DESTINATION_PATH_SELECTION" value="C:\JAR\x64\Moira.jar"/>
