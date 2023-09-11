@@ -52,6 +52,7 @@ import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Listener;
 import org.eclipse.swt.widgets.Menu;
 import org.eclipse.swt.widgets.MenuItem;
+import org.eclipse.swt.widgets.Monitor;
 import org.eclipse.swt.widgets.ProgressBar;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Text;
@@ -260,6 +261,26 @@ public class Moira {
 		return shell;
 	}
 
+	static public String getDisplayDefinitionPostfix() {
+		   final Display display = getShell().getDisplay();  
+		   final Monitor monitor = display.getPrimaryMonitor();
+		   final Rectangle rect;
+		   final int fhdPixels = 2073600; //1920*1080
+		   final int qhdPixels = 3686400; //2560*1440
+		   if (monitor != null) {
+		      rect = monitor.getClientArea();
+		   } else {
+		      // In case we cannot find the primary monitor get the entire display rectangle
+		      // Note that it may include the dimensions of multiple monitors. 
+		      rect = display.getBounds();
+		   }	
+		   if (rect.width * rect.height <= (int)fhdPixels * 1.5) return "";
+		   if (rect.width * rect.height > (int)fhdPixels * 1.5 &&
+				   rect.width * rect.height <= (int)qhdPixels * 1.5) return "2K";
+		   if (rect.width * rect.height > (int)qhdPixels * 1.5) return "4K";
+		   return "";
+	}
+	
 	static public void setFocus(Control control) {
 		if (active)
 			control.setFocus();
@@ -877,6 +898,7 @@ public class Moira {
 				openShell();
 			}
 		});
+		//String hdPostFix = getDisplayDefinitionPostfix();
 		flushEvents(false);
 		endProgress();
 		flushEvents(true);

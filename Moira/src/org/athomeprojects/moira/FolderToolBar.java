@@ -59,7 +59,7 @@ public class FolderToolBar {
     static private final int FIND_BAR_ORDER = 3;
 
     static private final int NUM_BAR_ORDER = 4;
-
+        
     static private CTabFolder parent_folder;
 
     static private CoolBar folder_bar;
@@ -84,7 +84,7 @@ public class FolderToolBar {
 
     static private int find_pos, max_find_history;
 
-    static private boolean no_reset;
+    static private boolean no_reset;    
 
     static public void init(CTabFolder folder)
     {
@@ -108,6 +108,7 @@ public class FolderToolBar {
         folder_bar = new CoolBar(place_holder, SWT.NONE);
         folder_bar.setBackground(folder_container.getBackground());
         containers[FILE_BAR_ORDER] = new Composite(folder_bar, SWT.NONE);
+        //containers[FILE_BAR_ORDER] = new Composite(folder_bar, SWT.HORIZONTAL);
         layout = new GridLayout(6, false);
         layout.marginHeight = layout.marginWidth = 0;
         layout.horizontalSpacing = ICON_SPACING;
@@ -402,7 +403,7 @@ public class FolderToolBar {
         visibles[FILE_BAR_ORDER] = Resource.getPrefInt("show_file") != 0;
         visibles[EDIT_BAR_ORDER] = Resource.getPrefInt("show_edit") != 0;
         visibles[PREF_BAR_ORDER] = Resource.getPrefInt("show_pref") != 0;
-        visibles[FIND_BAR_ORDER] = Resource.getPrefInt("show_find") != 0;
+        visibles[FIND_BAR_ORDER] = Resource.getPrefInt("show_find") != 0;        
         removeAllCoolItems();
         boolean has_visible = false;
         for (int i = 0; i < visibles.length; i++) {
@@ -431,10 +432,16 @@ public class FolderToolBar {
             }
             folder_bar.setParent(folder_container);
             folder_bar.moveAbove(help);
-        }
+        }        
         folder_container.setParent(parent_folder);
-        parent_folder.setTopRight(folder_container);
+        parent_folder.setTopRight(folder_container);    
+        // !!!! 
+        // Need to set height of tab to show toolbar
+        parent_folder.setTabHeight(Math.max(folder_bar.computeSize(SWT.DEFAULT,
+        		SWT.DEFAULT).y, parent_folder.getTabHeight()));      
+        //by cyliu12
         updateFolderBarState();
+
     }
 
     static private void findSelectAll()
@@ -451,7 +458,10 @@ public class FolderToolBar {
         items[index].setControl(containers[index]);
         containers[index].pack();
         Point size = containers[index].getSize();
-        items[index].setPreferredSize(items[index].computeSize(size.x, size.y));
+        items[index].setPreferredSize(items[index].computeSize(size.x, size.y));    
+        folder_bar.pack();	//pack會重算folder_bar的大小，但其實不影響實既顯示，因為實既顯示前一定會pack過，只是getSize查不到真實pack過的大小。
+        //這裡有Y方向不能超過22的限制，應該是來自tab_folder設定的限制。這裡要讓folder_bar能get到正確的size，之後parent_folder才能計算tab height。        
+        //by cyliu12
     }
 
     static private void removeAllCoolItems()

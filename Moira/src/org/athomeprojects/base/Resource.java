@@ -31,13 +31,13 @@ import java.util.prefs.Preferences;
 public class Resource {
     static public boolean trace = true;
 
-    static public final String NAME = "Moira x64";
-
-    static public final String NUMBER = "1.50";
+    static public final String NUMBER = "1.50.6410.0000";
+    
+    static public final String NAME = "Moira " + NUMBER;
 
     static public final String COPYRIGHT_1 = "Copyright ";
 
-    static public final String COPYRIGHT_2 = " 2004-2015 At Home Projects & 2020 cyliu";
+    static public final String COPYRIGHT_2 = " 2004-2015 At Home Projects & mod by cyliu 2023";
 
     static public final String DATA_EXT = "mri";
 
