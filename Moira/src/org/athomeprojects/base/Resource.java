@@ -30,11 +30,11 @@ import java.util.prefs.Preferences;
 
 public class Resource {
     static public boolean trace = true;
+    
+    static public final String NAME = "Moira";    
 
     static public final String NUMBER = "1.50.6410.0000";
-    
-    static public final String NAME = "Moira " + NUMBER;
-
+   
     static public final String COPYRIGHT_1 = "Copyright ";
 
     static public final String COPYRIGHT_2 = " 2004-2015 At Home Projects & mod by cyliu 2023";
@@ -738,7 +738,7 @@ public class Resource {
 
     static public String getFootnote()
     {
-        if (Resource.hasPrefKey("footnote")) {
+        if (Resource.hasPrefKey("footnote") && false) {		//cyliu12
             return Resource.getPrefString("footnote");
         } else {
             return Resource.NAME + " version " + Resource.NUMBER + ", "
