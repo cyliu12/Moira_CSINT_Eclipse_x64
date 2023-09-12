@@ -2218,10 +2218,10 @@ public class MenuFolder {
         if (os_stat) {
             String version = System.getProperty("java.version");
             String os_name = System.getProperty("os.name");
-            title += ChartMode.getModeTitle() + " - " + Resource.NAME
+            title += ChartMode.getModeTitle() + " - " + Resource.NAME + Resource.NUMBER //cyliu12
                     + "      [Java " + version + ", " + os_name + "]";
         } else {
-            title += " - " + Resource.NAME;
+            title += " - " + Resource.NAME + Resource.NUMBER;	//cyliu12
         }
         if (html_shell != null) {
             String str = html_shell.getText();

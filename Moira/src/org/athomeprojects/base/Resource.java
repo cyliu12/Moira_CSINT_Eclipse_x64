@@ -33,7 +33,7 @@ public class Resource {
     
     static public final String NAME = "Moira";    
 
-    static public final String NUMBER = "1.50.6410.0000";
+    static public final String NUMBER = "1.50.6410.0001";
    
     static public final String COPYRIGHT_1 = "Copyright ";
 
