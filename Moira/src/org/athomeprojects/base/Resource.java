@@ -28,12 +28,14 @@ import java.util.StringTokenizer;
 import java.util.prefs.BackingStoreException;
 import java.util.prefs.Preferences;
 
+import org.athomeprojects.moira.Moira;
+
 public class Resource {
     static public boolean trace = true;
     
     static public final String NAME = "Moira";    
 
-    static public final String NUMBER = "1.50.6410.0001";
+    static public final String NUMBER = "1.50.6410.0002";
    
     static public final String COPYRIGHT_1 = "Copyright ";
 
@@ -64,6 +66,8 @@ public class Resource {
     static public String[] ALL_EXTENSIONS = { "*." + DATA_EXT, "*." + RSRC_EXT,
             "*." + RULE_EXT };
 
+    static public String HD_POSTFIX = "";	//empty for FHD or under //cyliu12
+    
     static private final String invalid_string = "?Invalid?";
 
     static private final String[] reject_font_array = { "Arial Unicode MS" };
@@ -71,7 +75,7 @@ public class Resource {
     static public final String LOCAL_PREFIX = "local:";
 
     static public final int DIAGRAM_WIDTH = 640;
-
+        
     static private Font[] font_array;
 
     static private boolean simplified, alt_exclusive;
@@ -92,7 +96,9 @@ public class Resource {
 
     public Resource(Class clss, String language, String prefer_font_name,
             String mod_name, String eval_name)
-    {
+    {    
+    	HD_POSTFIX = Moira.getDisplayDefinitionPostfix();
+    	//HD_POSTFIX = "4K";
         resource = null;
         //prefs = (clss == null) ? null : Preferences.userNodeForPackage(clss);
         prefs = (clss == null) ? null : new MyPrefs(clss);

@@ -32,6 +32,7 @@ import org.eclipse.swt.custom.CTabFolder;
 import org.eclipse.swt.custom.StackLayout;
 import org.eclipse.swt.events.KeyAdapter;
 import org.eclipse.swt.events.KeyEvent;
+import org.eclipse.swt.events.MouseAdapter;
 import org.eclipse.swt.events.MouseEvent;
 import org.eclipse.swt.events.MouseTrackAdapter;
 import org.eclipse.swt.events.SelectionAdapter;
@@ -128,6 +129,12 @@ public class Moira {
 				chart_tab.hideUIInfo();
 			}
 		});
+	    tab_folder.addMouseListener(new MouseAdapter()  {
+
+	        public void mouseDoubleClick(MouseEvent arg0) {
+	          FolderToolBar.resetToolBarAppearance();
+	        }
+	      });		
 		TabManager.initFolder(TabManager.MAIN_FOLDER, tab_folder);
 		TabManager.setTabItem(TabManager.MAIN_FOLDER,
 				TabManager.CHART_TAB_ORDER, chart_tab

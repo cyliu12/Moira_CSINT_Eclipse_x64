@@ -19,6 +19,7 @@
 package org.athomeprojects.moira;
 
 import java.util.LinkedList;
+import java.util.stream.IntStream;
 
 import org.athomeprojects.base.ChartMode;
 import org.athomeprojects.base.Message;
@@ -39,6 +40,7 @@ import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Combo;
 import org.eclipse.swt.widgets.Composite;
+import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.CoolBar;
 import org.eclipse.swt.widgets.CoolItem;
 import org.eclipse.swt.widgets.Display;
@@ -107,8 +109,7 @@ public class FolderToolBar {
         });
         folder_bar = new CoolBar(place_holder, SWT.NONE);
         folder_bar.setBackground(folder_container.getBackground());
-        containers[FILE_BAR_ORDER] = new Composite(folder_bar, SWT.NONE);
-        //containers[FILE_BAR_ORDER] = new Composite(folder_bar, SWT.HORIZONTAL);
+        containers[FILE_BAR_ORDER] = new Composite(folder_bar, SWT.NONE);        
         layout = new GridLayout(6, false);
         layout.marginHeight = layout.marginWidth = 0;
         layout.horizontalSpacing = ICON_SPACING;
@@ -436,7 +437,7 @@ public class FolderToolBar {
         folder_container.setParent(parent_folder);
         parent_folder.setTopRight(folder_container);    
         // !!!! 
-        // Need to set height of tab to show toolbar
+        // Need to set height of tab to show Toolbar
         parent_folder.setTabHeight(Math.max(folder_bar.computeSize(SWT.DEFAULT,
         		SWT.DEFAULT).y, parent_folder.getTabHeight()));      
         //by cyliu12
@@ -459,8 +460,7 @@ public class FolderToolBar {
         containers[index].pack();
         Point size = containers[index].getSize();
         items[index].setPreferredSize(items[index].computeSize(size.x, size.y));    
-        folder_bar.pack();	//pack·|­«ºâfolder_barªº¤j¤p¡A¦ý¨ä¹ê¤£¼vÅT¹ê¬JÅã¥Ü¡A¦]¬°¹ê¬JÅã¥Ü«e¤@©w·|pack¹L¡A¥u¬OgetSize¬d¤£¨ì¯u¹êpack¹Lªº¤j¤p¡C
-        //³o¸Ì¦³Y¤è¦V¤£¯à¶W¹L22ªº­­¨î¡AÀ³¸Ó¬O¨Ó¦Ûtab_folder³]©wªº­­¨î¡C³o¸Ì­nÅýfolder_bar¯àget¨ì¥¿½Tªºsize¡A¤§«áparent_folder¤~¯à­pºâtab height¡C        
+        folder_bar.pack();	//packä¸å½±éŸ¿é¡¯ç¤ºï¼Œå› ç‚ºå¯¦éš›é¡¯ç¤ºå‰éƒ½æœƒpackï¼Œä½†æ˜¯ä¸packï¼ŒåŸ·è¡ŒgetSizeå°±å–ä¸åˆ°æ­£ç¢ºçš„size        
         //by cyliu12
     }
 
@@ -540,8 +540,7 @@ public class FolderToolBar {
                     .toArray(new String[1]));
         }
         if (folder_bar.getItemCount() > 0) {
-            Resource
-                    .putPrefIntArray("toolbar_order", folder_bar.getItemOrder());
+            Resource.putPrefIntArray("toolbar_order", folder_bar.getItemOrder());
             Point[] sizes = folder_bar.getItemSizes();
             int[] array = new int[sizes.length];
             for (int i = 0; i < array.length; i++)
@@ -550,6 +549,19 @@ public class FolderToolBar {
         }
     }
 
+    static public void resetToolBarAppearance() {
+        if (folder_bar.getItemCount() > 0) {            	
+            Point[] sizes = folder_bar.getItemSizes();
+            CoolItem[] items = folder_bar.getItems();
+            int[] orders = new int[sizes.length];  
+            for (int i = 0; i < sizes.length; i++) {
+            	orders[i]=i;            	            	
+            	sizes[i].x = items[i].getPreferredSize().x;
+            }  
+            folder_bar.setItemLayout(orders, null, sizes); 
+        }
+    }
+    
     static public void findNextEntry(boolean forward)
     {
         if (!isVisible())

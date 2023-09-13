@@ -1025,7 +1025,7 @@ public class MenuFolder {
             }
         }
         File dir = new File(Moira.getIO().getFileName(
-                Resource.getString("example")));
+                Resource.getString("example")));        
         if (dir.canRead()) {
             String data_ext = (Resource.isSimplified() ? Resource.SIMPLIFIED_SUFFIX
                     : Resource.TRADITIONAL_SUFFIX)
