@@ -35,7 +35,7 @@ public class Resource {
     
     static public final String NAME = "Moira";    
 
-    static public final String NUMBER = "1.50.6410.0002";
+    static public final String NUMBER = "1.50.6410.0003";
    
     static public final String COPYRIGHT_1 = "Copyright ";
 

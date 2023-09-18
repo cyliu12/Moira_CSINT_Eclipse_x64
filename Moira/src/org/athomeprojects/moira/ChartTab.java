@@ -19,6 +19,11 @@ package org.athomeprojects.moira;
 
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.util.Hashtable;
 
 import org.athomeprojects.base.BaseCalendar;
 import org.athomeprojects.base.Calculate;
@@ -217,6 +222,21 @@ class ChartTab {
         grid_layout.marginWidth = grid_layout.marginHeight = 0;
         top_composite.setLayout(grid_layout);
         ctrl_composite = new Composite(top_composite, SWT.NONE);
+        ctrl_composite.addMouseListener(new MouseAdapter() {	//add by cyliu12 用來接收外部流年時間設定
+            public void mouseDoubleClick(MouseEvent event)
+            {
+                fetchQuickNowTime();
+            }
+
+			private void fetchQuickNowTime() {
+				// TODO Auto-generated method stub
+				int[] fetchedTime = FileIO.getQuickNowTimeFromFile();
+				if (fetchedTime[1] >= 0) {
+					now.setCalendar(fetchedTime);	
+					Moira.getMenu().enterName(true);						
+				}			
+			}
+        });             
         grid_layout = new GridLayout(1, false);
         grid_layout.marginWidth = grid_layout.marginHeight = 0;
         ctrl_composite.setLayout(grid_layout);
@@ -1174,7 +1194,7 @@ class ChartTab {
         if (TabManager.getTabItem(TabManager.SUB_FOLDER,
                 TabManager.NOW_TAB_ORDER) != null)
             return;
-        now_group.setParent(ctrl_composite);
+        now_group.setParent(ctrl_composite);     
         now_group.moveBelow(group);
         TabManager.setTabItem(TabManager.SUB_FOLDER, TabManager.NOW_TAB_ORDER,
                 desc_group[1], "current_date", on_top);
@@ -1285,7 +1305,7 @@ class ChartTab {
         astro_group.layout();
         astro_group.update();
         ctrl_composite.layout();
-        ctrl_composite.update();
+        ctrl_composite.update();      
         Composite composite = ui_mode ? ui_diagram : top_composite;
         composite.layout();
         composite.update();

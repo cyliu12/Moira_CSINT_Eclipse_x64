@@ -22,6 +22,7 @@ import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileOutputStream;
+import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
@@ -782,5 +783,40 @@ public class FileIO {
 	static public void setProgress(int val) {
 		if (base != null)
 			base.setProgress(val);
+	}
+	
+	static public int[] getQuickNowTimeFromFile() {	//add by cyliu12	
+		int[] result = new int[] {-1,-1,-1,-1,-1};
+		String file_name = Resource.getString("fetch_quick_now_time");
+		File f = new File(file_name);
+		if (f.exists() && !f.isDirectory()) {
+		    try(BufferedReader br = new BufferedReader(new FileReader(file_name)))
+		    {
+		        String line = null;		        
+		        while ((line = br.readLine()) != null) 
+		        {
+					String[] spl = line.split(",");
+					if (spl.length == 5) {		
+						boolean goodParse = true;
+						for (int i = 0; i < 5; i++) {
+						    try {
+						        result[i] = Integer.parseInt(spl[i]);
+						    } catch (NumberFormatException e) {
+						    	goodParse &= false;
+						    }
+						}
+						if (!goodParse) result = new int[] {-1,-1,-1,-1,-1};
+					}
+					break;	//只讀第一行
+		        }
+		    }
+		    catch (IOException e) 
+		    {
+		        e.printStackTrace();
+		    }							
+		}
+		return result;
+
+
 	}
 }
